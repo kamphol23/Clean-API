@@ -4,11 +4,11 @@ using MediatR;
 
 namespace Application.Commands.Dogs.UpdateDog
 {
-    internal class UpdateDogByIdCommandHandler : IRequestHandler<UpdateDogByIdCommand, Dog>
+    internal class DeleteDogCommandHandler : IRequestHandler<UpdateDogByIdCommand, Dog>
     {
         private readonly MockDatabase _mockDatabase;
 
-        public UpdateDogByIdCommandHandler(MockDatabase mockDatabase)
+        public DeleteDogCommandHandler(MockDatabase mockDatabase)
         {
             _mockDatabase = mockDatabase;
         }
