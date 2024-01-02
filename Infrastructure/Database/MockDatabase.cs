@@ -1,21 +1,40 @@
 ﻿using Domain.Models;
+using Domain.Models.Animal;
 
 namespace Infrastructure.Database
 {
     public class MockDatabase
     {
-        public List<Dog> Dogs
+
+        public List<AnimalModel> allAnimals
         {
-            get { return allDogs; }
-            set { allDogs = value; }
+
+            get
+            {
+                List<AnimalModel> combindAnimalsList = new List<AnimalModel>();
+                combindAnimalsList.AddRange(listOfAllDogs);
+                return combindAnimalsList;
+            }
+
+            set
+            {
+                listOfAllDogs = value.OfType<Dog>().ToList();
+            }
+
+
         }
 
-        private static List<Dog> allDogs = new()
+        public List<Dog> listOfAllDogs
         {
-            new Dog { Id = Guid.NewGuid(), Name = "Björn"},
-            new Dog { Id = Guid.NewGuid(), Name = "Patrik"},
-            new Dog { Id = Guid.NewGuid(), Name = "Alfred"},
-            new Dog { Id = new Guid("12345678-1234-5678-1234-567812345678"), Name = "TestDogForUnitTests"}
+            get { return allDogsFromDb; }
+            set { allDogsFromDb = value; }
+        }
+
+        private static List<Dog> allDogsFromDb = new()
+        {
+            new Dog { Id = Guid.NewGuid(), Name = "Frasse"},
+
         };
-    }
-}
+
+    };
+};

@@ -14,11 +14,12 @@ namespace Application.Commands.Dogs.DeleteDog
         }
         public Task<Dog> Handle(DeleteDogByIdCommand request, CancellationToken cancellationToken)
         {
-            Dog dogToDelete = _mockDatabase.Dogs.FirstOrDefault(dog => dog.Id == request.Id)!;
+            Dog dogToDelete = _mockDatabase.listOfAllDogs.FirstOrDefault(dog => dog.Id == request.Id)!;
 
-            dogToDelete.Name = request.DeleteDog.Name;
+            
+                _mockDatabase.listOfAllDogs.Remove(dogToDelete);
 
-            return Task.FromResult(dogToDelete);
+                return Task.FromResult(dogToDelete);
         }
     }
 }

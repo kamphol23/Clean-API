@@ -22,7 +22,7 @@ namespace Application.Commands.Dogs
                 Name = request.NewDog.Name
             };
 
-            _mockDatabase.Dogs.Add(dogToCreate);
+            _mockDatabase.listOfAllDogs.Add(dogToCreate);
 
             return Task.FromResult(dogToCreate);
         }
