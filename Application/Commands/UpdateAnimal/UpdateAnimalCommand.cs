@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.UpdateAnimal
 {
-   public class UpDateAnimalCommand : IRequest<AnimalModel>
+   public class UpdateAnimalCommand : IRequest<AnimalModel>
     {
-        public UpDateAnimalCommand(AnimalDto updatedAnimal, Guid id) 
+        public UpdateAnimalCommand(AnimalDto updatedAnimal, Guid id) 
         {
             UpdatedAnimal = updatedAnimal;
             AnimalId = id;

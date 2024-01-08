@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.DeleteAnimal
 {
-    internal class DeleteAnimalCommandHandler : IRequestHandler<DeleteAnimalCommand, Unit>
+    public class DeleteAnimalCommandHandler : IRequestHandler<DeleteAnimalCommand, Unit>
     {
         private readonly MockDatabase _mockDatabase;
 
@@ -23,7 +23,7 @@ namespace Application.Commands.DeleteAnimal
 
         public Task<Unit> Handle(DeleteAnimalCommand request, CancellationToken cancellationToken)
         {
-            AnimalModel selectedAnimal = _mockDatabase.allAnimals.FirstOrDefault(animal => animal.animalId == request.Id)!;
+            AnimalModel selectedAnimal = _mockDatabase.allAnimals.FirstOrDefault(animal => animal.animalId == request.AnimalId)!;
 
             if(selectedAnimal == null)
             {

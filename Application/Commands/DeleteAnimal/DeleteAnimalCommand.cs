@@ -12,13 +12,11 @@ namespace Application.Commands.DeleteAnimal
 {
     public class DeleteAnimalCommand : IRequest<Unit>
     {
-        public DeleteAnimalCommand(AnimalDto deleteAnimal, Guid id)
-        {
-            DeleteAnimal = deleteAnimal;
-            Id = id;
-        }
+       public Guid AnimalId { get; set; }
 
-        public AnimalDto DeleteAnimal { get; }
-        public Guid Id { get; }
+        public DeleteAnimalCommand(Guid animalId)
+        {
+            AnimalId = animalId;
+        }
     }
 }
