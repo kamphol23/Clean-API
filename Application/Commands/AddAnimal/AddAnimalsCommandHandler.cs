@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.AddAnimals
 {
-    internal class AddAnimalsCommandHandler : IRequestHandler<AddAnimalsCommand, AnimalModel>
+    public class AddAnimalsCommandHandler : IRequestHandler<AddAnimalsCommand, AnimalModel>
     {
         private readonly MockDatabase _mockDatabase;
 

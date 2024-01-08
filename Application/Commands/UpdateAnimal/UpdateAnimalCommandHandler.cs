@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.UpdateAnimal
 {
-    public class UpdateAnimalCommandHandler : IRequestHandler<UpDateAnimalCommand, AnimalModel>
+    public class UpdateAnimalCommandHandler : IRequestHandler<UpdateAnimalCommand, AnimalModel>
     {
         private readonly MockDatabase _mockDatabase;
 
@@ -19,7 +19,7 @@ namespace Application.Commands.UpdateAnimal
             _mockDatabase = mockDatabase;
         }
 
-        public Task<AnimalModel> Handle(UpDateAnimalCommand request, CancellationToken cancellationToken)
+        public Task<AnimalModel> Handle(UpdateAnimalCommand request, CancellationToken cancellationToken)
         {
             AnimalModel animalToUpdate = _mockDatabase.allAnimals.FirstOrDefault(AnimalModel => AnimalModel.animalId == request.AnimalId)!;
 
@@ -51,7 +51,7 @@ namespace Application.Commands.UpdateAnimal
         }
 
 
-        private AnimalModel CreateUpdatedAnimal(UpDateAnimalCommand request, AnimalModel existingAnimal)
+        private AnimalModel CreateUpdatedAnimal(UpdateAnimalCommand request, AnimalModel existingAnimal)
         {
 
             string? updatedType = string.IsNullOrEmpty(request.UpdatedAnimal.Type) || request.UpdatedAnimal.Type == "string" ? existingAnimal.Type : request.UpdatedAnimal.Type;

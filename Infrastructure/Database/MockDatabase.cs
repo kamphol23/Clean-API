@@ -48,20 +48,23 @@ namespace Infrastructure.Database
         private static List<Dog> allDogsFromDb = new()
         {
             new Dog { animalId = Guid.NewGuid(), Name = "Frasse"},
+            new Dog { animalId = new Guid("12345678-1234-5678-1234-567812345678"), Name = "GetAnimalById"},
 
         };
 
         private static List<Cat> allCatsFromDb = new()
         {
             new Cat { animalId = Guid.NewGuid(), Name = "Toffie"},
+            new Cat { animalId = new Guid("12345678-1234-5678-1234-567812345623"), Name = "ToBeDeleteTested"}
 
         };
 
         private static List<Bird> allBirdsFromDb = new()
         {
             new Bird { animalId = Guid.NewGuid(), Name = "Kalle"},
+            new Bird { animalId = new Guid("12345678-1234-5678-1234-567812345622"), Name = "ToBeUpdated"}
         };
 
-
+        
     };
 };

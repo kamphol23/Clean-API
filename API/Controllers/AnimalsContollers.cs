@@ -48,14 +48,30 @@ namespace API.Controllers
         [Route("updateAnimal/{animalId}")]
         public async Task<IActionResult> UpdateAnimal([FromBody] AnimalDto updatedAnimal, Guid animalId)
         {
-            return Ok(await _mediator.Send(new UpDateAnimalCommand(updatedAnimal, animalId)));
+            return Ok(await _mediator.Send(new UpdateAnimalCommand(updatedAnimal, animalId)));
         }
 
         [HttpDelete]
         [Route("deleteAnimal/{animalId}")]
-        public async Task<IActionResult> DeleteDog([FromBody] AnimalDto deleteAnimal, Guid animalId)
+        public async Task<IActionResult> DeleteAnimal( Guid animalId)
         {
-            return Ok(await _mediator.Send(new DeleteAnimalCommand(deleteAnimal, animalId)));
+            try
+            {
+                var animalDto = await _mediator.Send(new GetAnimalByIdQuery(animalId));
+
+                if(animalDto == null)
+                {
+                    return NotFound(new { Error = "Id dose not exist." });
+
+                }
+                await _mediator.Send(new DeleteAnimalCommand(animalId));
+                return Ok(new { Massage = $"Slected animal {animalDto.Name} has succefuly ben deleted" });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new { Massage = "Something whent wrong." });
+            }
+            
         }
     }
 }
