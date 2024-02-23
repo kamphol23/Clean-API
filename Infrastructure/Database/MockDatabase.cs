@@ -1,5 +1,6 @@
 ﻿using Domain.Models;
 using Domain.Models.Animal;
+using Domain.Models.UserModel;
 
 namespace Infrastructure.Database
 {
@@ -44,6 +45,17 @@ namespace Infrastructure.Database
             set { allBirdsFromDb = value; }
         }
 
+        public List<User> listOfAllUsers
+        {
+           get { return allUsersFromDb; }
+           set { allUsersFromDb = value; }
+        }
+
+
+        private static List<User> allUsersFromDb = new()
+        {
+            new User { Password = "SjöGurka", UserName = "kamphol" }
+        };
 
         private static List<Dog> allDogsFromDb = new()
         {
