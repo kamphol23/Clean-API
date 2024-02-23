@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.UserLogin
 {
-    public class LogInQueryHandler : IRequestHandler<LogInQuerys, User>
+    public class LogInQueryHandler : IRequestHandler<LogInQuerys, UserModle>
     {
         private readonly MockDatabase _mockDatabase;
 
@@ -18,7 +18,7 @@ namespace Application.Queries.UserLogin
             _mockDatabase = mockDatabase;
         }
 
-        public Task<User> Handle(LogInQuerys request, CancellationToken cancellation)
+        public Task<UserModle> Handle(LogInQuerys request, CancellationToken cancellation)
         {
             var  wantedUser =  _mockDatabase.listOfAllUsers.FirstOrDefault(User => User.UserName == request.UserLogIn.UserName );
 

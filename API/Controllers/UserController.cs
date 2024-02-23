@@ -1,5 +1,8 @@
-﻿using Application.Commands.Users.RegisterNewUser;
+﻿using Application.Commands.Users.DeleteUser;
+using Application.Commands.Users.RegisterUser;
+using Application.Commands.Users.UpdateUser;
 using Application.Dtos;
+using Application.Queries.GettAllUser;
 using Application.Queries.UserLogin;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +34,27 @@ namespace API.Controllers
         public async Task<IActionResult> LogIn([FromBody] UserDto UserLogIn)
         {
             return Ok(await _mediator.Send(new LogInQuerys(UserLogIn)));
+        }
+
+        [HttpGet]
+        [Route("getAllUser")]
+        public async Task<IActionResult> GettAllUser()
+        {
+            return Ok( await _mediator.Send(new GetAllUserQuery()));
+        }
+
+        [HttpPut]
+        [Route("updateUser")]
+        public async Task<IActionResult> UpdateUser([FromBody] UserDto updatedUser, Guid userId)
+        {
+            return Ok(await _mediator.Send(new UpdateUserCommand(updatedUser, userId)));
+        }
+
+        [HttpDelete]
+        [Route("deleteUser")]
+        public async Task<IActionResult> DeleteUser([FromBody] Guid userId)
+        {
+            return Ok(await _mediator.Send(new DeleteUserCommand( userId)));
         }
     }
 }

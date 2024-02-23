@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models.UserModel
 {
-    public class User
+    public class UserModle
     {
         public Guid UserId { get; set; }
         public required string UserName { get; set; }

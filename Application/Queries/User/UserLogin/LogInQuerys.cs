@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.UserLogin
 {
-   public class LogInQuerys : IRequest<User>
+   public class LogInQuerys : IRequest<UserModle>
     {   
         public UserDto UserLogIn { get; set; }
         public LogInQuerys(UserDto UserLogIn) {

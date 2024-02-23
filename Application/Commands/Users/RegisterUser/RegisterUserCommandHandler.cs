@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Commands.Users.RegisterNewUser
+namespace Application.Commands.Users.RegisterUser
 {
-    public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, User>
+    public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, UserModle>
     {
         private readonly MockDatabase _mockDatabase;
 
@@ -18,7 +18,7 @@ namespace Application.Commands.Users.RegisterNewUser
             _mockDatabase = mockDatabase;
         }
 
-        public  Task<User> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+        public Task<UserModle> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
             if (request.newUser == null || string.IsNullOrEmpty(request.newUser.UserName) || string.IsNullOrEmpty(request.newUser.Password))
             {
@@ -27,7 +27,7 @@ namespace Application.Commands.Users.RegisterNewUser
 
             try
             {
-                User NewUser = new User
+                UserModle NewUser = new UserModle
                 {
                     UserName = request.newUser.UserName,
                     UserId = Guid.NewGuid(),
@@ -35,7 +35,8 @@ namespace Application.Commands.Users.RegisterNewUser
                 };
 
                 return Task.FromResult(NewUser);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new ArgumentException("Registration failed");
             }

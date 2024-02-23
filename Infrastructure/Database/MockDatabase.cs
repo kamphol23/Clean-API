@@ -45,16 +45,16 @@ namespace Infrastructure.Database
             set { allBirdsFromDb = value; }
         }
 
-        public List<User> listOfAllUsers
+        public List<UserModle> listOfAllUsers
         {
            get { return allUsersFromDb; }
            set { allUsersFromDb = value; }
         }
 
 
-        private static List<User> allUsersFromDb = new()
+        private static List<UserModle> allUsersFromDb = new()
         {
-            new User { Password = "SjöGurka", UserName = "kamphol" }
+            new UserModle { Password = "SjöGurka", UserName = "kamphol" }
         };
 
         private static List<Dog> allDogsFromDb = new()

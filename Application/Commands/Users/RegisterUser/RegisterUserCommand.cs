@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Commands.Users.RegisterNewUser
+namespace Application.Commands.Users.RegisterUser
 {
-    public class RegisterUserCommand : IRequest<User> 
+    public class RegisterUserCommand : IRequest<UserModle>
     {
-        public UserDto newUser {  get; set; }
+        public UserDto newUser { get; set; }
         public RegisterUserCommand(UserDto newUser)
         {
             this.newUser = newUser;
-        }   
+        }
     }
 }
